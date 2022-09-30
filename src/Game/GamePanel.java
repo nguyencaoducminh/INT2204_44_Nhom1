@@ -22,9 +22,13 @@ public class GamePanel extends JPanel implements Runnable {
 
     Thread gameThread;
     KeyHandler keyH = new KeyHandler();
-    TileManager tileM = new TileManager(this);
+    public TileManager tileM = new TileManager(this);
     Player player = new Player(this, keyH);
     public CollisionChecker cChecker = new CollisionChecker(this);
+
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 2;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -61,6 +65,15 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void update() {
         player.update();
+
+        if (!player.haveBomb) {
+            player.bomb.update();
+            if (player.bomb.bombTimer == 0) {
+                player.bomb.explode = true;
+            } else if (player.bomb.bombTimer < 0) {
+                player.haveBomb = true;
+            }
+        }
     }
 
     public void paintComponent (Graphics g) {
@@ -69,6 +82,10 @@ public class GamePanel extends JPanel implements Runnable {
         Graphics2D g2 = (Graphics2D) g;
 
         tileM.draw(g2);
+
+        if (!player.haveBomb) {
+            player.bomb.draw(g2);
+        }
 
         player.draw(g2);
 

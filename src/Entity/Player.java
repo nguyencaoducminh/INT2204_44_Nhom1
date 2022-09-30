@@ -13,6 +13,8 @@ public class Player extends Entity {
     KeyHandler keyH;
     int hitBoxWidth = 18;
     int hitBoxHeight = 24;
+    public Bomb bomb;
+    public boolean haveBomb = true;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
@@ -77,6 +79,12 @@ public class Player extends Entity {
                 spriteCounter = 0;
             }
         }
+
+        if (keyH.spacePressed && haveBomb) {
+            placeBomb();
+            haveBomb = false;
+            keyH.spacePressed = false;
+        }
     }
 
     public void draw(Graphics2D g2) {
@@ -117,5 +125,9 @@ public class Player extends Entity {
         }
 
         g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+    }
+
+    public void placeBomb() {
+        bomb = new Bomb(gp, this);
     }
 }
