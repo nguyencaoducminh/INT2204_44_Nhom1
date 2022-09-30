@@ -68,7 +68,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         if (!player.haveBomb) {
             player.bomb.update();
-            if (player.bomb.bombTimer == 0) {
+            if (player.bomb.bombTimer == 45) {
                 player.bomb.explode = true;
             } else if (player.bomb.bombTimer < 0) {
                 player.haveBomb = true;

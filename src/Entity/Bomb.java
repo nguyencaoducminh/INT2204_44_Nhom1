@@ -10,7 +10,8 @@ import java.io.IOException;
 public class Bomb extends Entity {
     GamePanel gp;
     Player player;
-    public int bombTimer = 105;
+    public Explosion explosion;
+    public int bombTimer = 105 + 45;
     public int col;
     public int row;
     public boolean explode = false;
@@ -70,20 +71,26 @@ public class Bomb extends Entity {
             if (gp.tileM.tile[tileNum4].breakable) {
                 gp.tileM.mapTileNum[col][row-1] = 0;
             }
+
+            explosion = new Explosion(gp, this);
         }
 
         bombTimer--;
     }
 
     public void draw(Graphics2D g2) {
-        BufferedImage image = null;
+        if (bombTimer >= 45) {
+            BufferedImage image = null;
 
-        if (spriteNum == 1) {
-            image = start;
-        } else if (spriteNum == 2) {
-            image = up1;
+            if (spriteNum == 1) {
+                image = start;
+            } else if (spriteNum == 2) {
+                image = up1;
+            }
+
+            g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+        } else {
+            explosion.draw(g2);
         }
-
-        g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
     }
 }

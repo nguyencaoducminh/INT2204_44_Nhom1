@@ -12,7 +12,7 @@ public class Player extends Entity {
     GamePanel gp;
     KeyHandler keyH;
     int hitBoxWidth = 18;
-    int hitBoxHeight = 24;
+    int hitBoxHeight = 18;
     public Bomb bomb;
     public boolean haveBomb = true;
 
@@ -20,7 +20,7 @@ public class Player extends Entity {
         this.gp = gp;
         this.keyH = keyH;
 
-        hitBox = new Rectangle(x + 7, y + 4, hitBoxWidth, hitBoxHeight);
+        hitBox = new Rectangle(x + 7, y + 10, hitBoxWidth, hitBoxHeight);
 
         setDefaultValues();
         getPlayerImage();
