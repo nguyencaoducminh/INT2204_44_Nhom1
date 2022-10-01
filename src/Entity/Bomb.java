@@ -33,8 +33,6 @@ public class Bomb extends Entity {
 
         x = col * gp.tileSize;
         y = row * gp.tileSize;
-
-        hitBox = new Rectangle(x, y, gp.tileSize, gp.tileSize);
     }
 
     public void getBombImage() {
@@ -51,6 +49,10 @@ public class Bomb extends Entity {
         if (spriteCounter > 10) {
             spriteNum = (spriteNum == 1) ? 2 : 1;
             spriteCounter = 0;
+        }
+
+        if (bombTimer < 130) {
+            gp.tileM.mapTileNum[col][row] = 3;
         }
 
         if (explode) {
@@ -71,6 +73,8 @@ public class Bomb extends Entity {
             if (gp.tileM.tile[tileNum4].breakable) {
                 gp.tileM.mapTileNum[col][row-1] = 0;
             }
+
+            gp.tileM.mapTileNum[col][row] = 0;
 
             explosion = new Explosion(gp, this);
         }

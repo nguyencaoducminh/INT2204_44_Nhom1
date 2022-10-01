@@ -37,6 +37,9 @@ public class TileManager {
             tile[2].collision = true;
             tile[2].breakable = true;
 
+            tile[3] = new Tile();
+            tile[3].collision = true;
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -84,7 +87,7 @@ public class TileManager {
         while (col < gp.maxScreenCol && row < gp.maxScreenCol) {
             int tileNum = mapTileNum[col][row];
 
-            if (tileNum != 0) {
+            if (tileNum != 0 && tileNum != 3) {
                 g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
             }
             col++;
