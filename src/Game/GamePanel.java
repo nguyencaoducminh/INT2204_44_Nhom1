@@ -2,6 +2,7 @@ package Game;
 
 import Entity.Player;
 import Tile.TileManager;
+import Object.SuperObject;
 
 import javax.swing.JPanel;
 import java.awt.*;
@@ -17,18 +18,19 @@ public class GamePanel extends JPanel implements Runnable {
     public final int maxScreenRow = 18;
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
-
     int FPS = 60;
 
+    //Game Component
     Thread gameThread;
     KeyHandler keyH = new KeyHandler();
     public TileManager tileM = new TileManager(this);
+    public AssetSetter aSetter = new AssetSetter(this);
     Player player = new Player(this, keyH);
     public CollisionChecker cChecker = new CollisionChecker(this);
+    public SuperObject[] obj = new SuperObject[10];
 
-    public int gameState;
-    public final int playState = 1;
-    public final int pauseState = 2;
+    //Game Variables
+    public int level = 1;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -36,6 +38,10 @@ public class GamePanel extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
+    }
+
+    public void setupGame() {
+        aSetter.setObject();
     }
 
     public void startGameThread() {
@@ -68,7 +74,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         if (!player.haveBomb) {
             player.bomb.update();
-            if (player.bomb.bombTimer == 45) {
+            if (player.bomb.bombTimer == 30) {
                 player.bomb.explode = true;
             } else if (player.bomb.bombTimer < 0) {
                 player.haveBomb = true;
@@ -82,6 +88,12 @@ public class GamePanel extends JPanel implements Runnable {
         Graphics2D g2 = (Graphics2D) g;
 
         tileM.draw(g2);
+
+        for (SuperObject object : obj) {
+            if (object != null) {
+                object.draw(g2, this);
+            }
+        }
 
         if (!player.haveBomb) {
             player.bomb.draw(g2);

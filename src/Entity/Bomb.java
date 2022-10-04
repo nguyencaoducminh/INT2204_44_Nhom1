@@ -11,7 +11,7 @@ public class Bomb extends Entity {
     GamePanel gp;
     Player player;
     public Explosion explosion;
-    public int bombTimer = 105 + 45;
+    public int bombTimer = 105 + 30;
     public int col;
     public int row;
     public boolean explode = false;
@@ -26,7 +26,7 @@ public class Bomb extends Entity {
 
     public void setDefaultValues() {
         int playerX = player.x + 16;
-        int playerY = player.y + 16;
+        int playerY = player.y + 24;
 
         col = playerX / gp.tileSize;
         row = playerY / gp.tileSize;
@@ -51,8 +51,8 @@ public class Bomb extends Entity {
             spriteCounter = 0;
         }
 
-        if (bombTimer < 130) {
-            gp.tileM.mapTileNum[col][row] = 3;
+        if (bombTimer < 115) {
+            gp.tileM.mapTileNum[col][row] = 9;
         }
 
         if (explode) {
@@ -83,7 +83,7 @@ public class Bomb extends Entity {
     }
 
     public void draw(Graphics2D g2) {
-        if (bombTimer >= 45) {
+        if (bombTimer >= 30) {
             BufferedImage image = null;
 
             if (spriteNum == 1) {

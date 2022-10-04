@@ -1,6 +1,9 @@
 package Game;
 
 import Entity.Entity;
+import Object.SuperObject;
+
+import java.awt.*;
 
 public class CollisionChecker {
     GamePanel gp;
@@ -60,5 +63,74 @@ public class CollisionChecker {
                 }
                 break;
         }
+    }
+
+    public int checkObject(Entity entity, boolean player) {
+        int index = 999;
+
+        for (int i = 0; i < gp.obj.length; i++) {
+            if (gp.obj[i] != null) {
+                entity.hitBox.x = entity.hitBoxDefaultX + entity.x;
+                entity.hitBox.y = entity.hitBoxDefaultY + entity.y;
+
+                gp.obj[i].hitBox.x = gp.obj[i].hitBoxDefaultX + gp.obj[i].x;
+                gp.obj[i].hitBox.y = gp.obj[i].hitBoxDefaultY + gp.obj[i].y;
+
+                switch(entity.direction) {
+                    case "up":
+                        entity.hitBox.y -= entity.speed;
+                        if (entity.hitBox.intersects(gp.obj[i].hitBox)) {
+                            if (gp.obj[i].collision) {
+                                entity.collisionOn = true;
+                            }
+                            if (player) {
+                                index = i;
+                            }
+                        }
+                        break;
+                    case "down":
+                        entity.hitBox.y += entity.speed;
+                        if (entity.hitBox.intersects(gp.obj[i].hitBox)) {
+                            if (gp.obj[i].collision) {
+                                entity.collisionOn = true;
+                            }
+                            if (player) {
+                                index = i;
+                            }
+                        }
+                        break;
+                    case "left":
+                        entity.hitBox.x -= entity.speed;
+                        if (entity.hitBox.intersects(gp.obj[i].hitBox)) {
+                            if (gp.obj[i].collision) {
+                                entity.collisionOn = true;
+                            }
+                            if (player) {
+                                index = i;
+                            }
+                        }
+                        break;
+                    case "right":
+                        entity.hitBox.x += entity.speed;
+                        if (entity.hitBox.intersects(gp.obj[i].hitBox)) {
+                            if (gp.obj[i].collision) {
+                                entity.collisionOn = true;
+                            }
+                            if (player) {
+                                index = i;
+                            }
+                        }
+                        break;
+                }
+
+                entity.hitBox.x = entity.hitBoxDefaultX;
+                entity.hitBox.y = entity.hitBoxDefaultY;
+
+                gp.obj[i].hitBox.x = gp.obj[i].hitBoxDefaultX;
+                gp.obj[i].hitBox.y = gp.obj[i].hitBoxDefaultY;
+            }
+        }
+
+        return index;
     }
 }

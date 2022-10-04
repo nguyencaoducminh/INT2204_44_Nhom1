@@ -15,12 +15,15 @@ public class Player extends Entity {
     int hitBoxHeight = 18;
     public Bomb bomb;
     public boolean haveBomb = true;
+    int hasKey = 0;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
         this.keyH = keyH;
 
         hitBox = new Rectangle(x + 7, y + 10, hitBoxWidth, hitBoxHeight);
+        hitBoxDefaultX = hitBox.x;
+        hitBoxDefaultY = hitBox.y;
 
         setDefaultValues();
         getPlayerImage();
@@ -63,6 +66,9 @@ public class Player extends Entity {
 
             collisionOn = false;
             gp.cChecker.checkTile(this);
+
+            int objIndex = gp.cChecker.checkObject(this, true);
+            pickUpObject(objIndex);
 
             if (!collisionOn) {
                 switch (direction) {
@@ -129,5 +135,28 @@ public class Player extends Entity {
 
     public void placeBomb() {
         bomb = new Bomb(gp, this);
+    }
+
+    public void pickUpObject(int i) {
+        if (i != 999) {
+            String objectName = gp.obj[i].name;
+            switch (objectName) {
+                case "Key":
+                    hasKey++;
+                    gp.obj[i] = null;
+                    break;
+                case "Door":
+                    if (hasKey > 0) {
+                        hasKey--;
+                        gp.obj[i] = null;
+                    }
+                    break;
+                case "Stair":
+                    gp.obj[i] = null;
+                    gp.level++;
+                    System.out.println(gp.level);
+            }
+
+        }
     }
 }

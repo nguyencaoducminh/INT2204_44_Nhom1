@@ -20,7 +20,7 @@ public class TileManager {
         mapTileNum = new int[gp.maxScreenCol][gp.maxScreenCol];
 
         getTileImage();
-        loadMap("/res/maps/map_1.txt");
+        loadMap("/res/maps/1.txt");
     }
 
     public void getTileImage() {
@@ -37,8 +37,8 @@ public class TileManager {
             tile[2].collision = true;
             tile[2].breakable = true;
 
-            tile[3] = new Tile();
-            tile[3].collision = true;
+            tile[9] = new Tile();
+            tile[9].collision = true;
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -87,7 +87,7 @@ public class TileManager {
         while (col < gp.maxScreenCol && row < gp.maxScreenCol) {
             int tileNum = mapTileNum[col][row];
 
-            if (tileNum != 0 && tileNum != 3) {
+            if (tileNum == 1 || tileNum == 2) {
                 g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
             }
             col++;
