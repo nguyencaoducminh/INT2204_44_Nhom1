@@ -76,7 +76,9 @@ public class Bomb extends Entity {
 
             gp.tileM.mapTileNum[col][row] = 0;
 
-            explosion = new Explosion(gp, this);
+            if (explosion == null) {
+                explosion = new Explosion(gp, this);
+            }
         }
 
         bombTimer--;
