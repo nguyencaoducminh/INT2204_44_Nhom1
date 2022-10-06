@@ -12,7 +12,7 @@ public class BotSetter {
     public void setBot() {
         switch (gp.level) {
             case 1:
-                gp.bot[0] = new Ballone(gp, 14 * gp.tileSize, 1 * gp.tileSize);
+                gp.bot[0] = new Balloon(gp, 14 * gp.tileSize, gp.tileSize);
                 break;
         }
     }

@@ -18,6 +18,8 @@ public class Entity {
     public int hitBoxDefaultX, hitBoxDefaultY;
     public boolean collisionOn = false;
 
+    public void update() {}
+
     public void draw(Graphics2D g2, GamePanel gp) {
         BufferedImage image = null;
 

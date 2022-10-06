@@ -6,13 +6,13 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 
-public class Ballone extends Entity {
+public class Balloon extends Entity {
 
     GamePanel gp;
     int hotBoxWidth = 16;
-    Int hitBoxWeight = 16;
+    int hitBoxWeight = 16;
 
-    public Ballone(GamePanel gp, int x, int y) {
+    public Balloon(GamePanel gp, int x, int y) {
         this.gp = gp;
         hitBox = new Rectangle(x + 7, y + 5, hotBoxWidth, hitBoxWeight);
         hitBoxDefaultX = hitBox.x;
@@ -23,14 +23,14 @@ public class Ballone extends Entity {
         this.speed = 2;
         direction = "start";
 
-        getBalloneImage();
+        getBalloonImage();
     }
 
-    public void getBalloneImage() {
+    public void getBalloonImage() {
         try {
-            start = ImageIO.read(getClass().getResourceAsStream("/res/ballone/ballone_1.png"));
-            up1 = ImageIO.read(getClass().getResourceAsStream("/res/ballone/ballone_2.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/res/ballone/ballone_3.png"));
+            start = ImageIO.read(getClass().getResourceAsStream("/res/ballone/balloon_1.png"));
+            up1 = ImageIO.read(getClass().getResourceAsStream("/res/ballone/balloon_2.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/res/ballone/balloon_3.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

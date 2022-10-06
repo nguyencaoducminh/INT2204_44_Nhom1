@@ -86,9 +86,10 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
 
-        //TODO: hàm update
         for (Entity entity : bot) {
-            entity.update();
+            if (entity != null) {
+                entity.update();
+            }
         }
     }
 
@@ -110,7 +111,9 @@ public class GamePanel extends JPanel implements Runnable {
         }
 
         for (Entity entity : bot) {
-            entity.draw();
+            if (entity != null) {
+                entity.draw(g2, this);
+            }
          }
 
         player.draw(g2);
@@ -119,13 +122,14 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void changeLevel() {
+        aSetter.clearObjectList();
+        bSetter.clearBotList();
+
         if (level <= maxLevel) {
-            aSetter.clearObjectList();
             setupGame();
             tileM.loadMap("/res/maps/" + level + ".txt");
             player.setDefaultValues();
         } else {
-            aSetter.clearObjectList();
             tileM.loadMap("/res/maps/end.txt");
             player.setDefaultValues();
             player.speed = 0;
