@@ -27,9 +27,10 @@ public class GamePanel extends JPanel implements Runnable {
     public AssetSetter aSetter = new AssetSetter(this);
     Player player = new Player(this, keyH);
     public CollisionChecker cChecker = new CollisionChecker(this);
-    public SuperObject[] obj = new SuperObject[10];
+    public SuperObject[] obj = new SuperObject[15];
 
     //Game Variables
+    public int maxLevel = 3;
     public int level = 1;
 
     public GamePanel() {
@@ -102,5 +103,19 @@ public class GamePanel extends JPanel implements Runnable {
         player.draw(g2);
 
         g2.dispose();
+    }
+
+    public void changeLevel() {
+        if (level <= maxLevel) {
+            aSetter.clearObjectList();
+            setupGame();
+            tileM.loadMap("/res/maps/" + level + ".txt");
+            player.setDefaultValues();
+        } else {
+            aSetter.clearObjectList();
+            tileM.loadMap("/res/maps/end.txt");
+            player.setDefaultValues();
+            player.speed = 0;
+        }
     }
 }

@@ -37,6 +37,9 @@ public class TileManager {
             tile[2].collision = true;
             tile[2].breakable = true;
 
+            tile[3] = new Tile();
+            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/win_prompt.png"));
+
             tile[9] = new Tile();
             tile[9].collision = true;
 
@@ -77,7 +80,7 @@ public class TileManager {
     }
 
     public void draw(Graphics2D g2) {
-        g2.drawImage(tile[0].image, 0, 0, 512, 512, null);
+        g2.drawImage(tile[0].image, 0, 0, 16 * gp.tileSize, 16 * gp.tileSize, null);
 
         int col = 0;
         int row = 0;
@@ -89,6 +92,8 @@ public class TileManager {
 
             if (tileNum == 1 || tileNum == 2) {
                 g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
+            } else if (tileNum == 3) {
+                g2.drawImage(tile[3].image, x, y, 6 * gp.tileSize, 2 * gp.tileSize, null);
             }
             col++;
             x += gp.tileSize;

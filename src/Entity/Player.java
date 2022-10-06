@@ -32,7 +32,7 @@ public class Player extends Entity {
     public void setDefaultValues() {
         this.x = 32;
         this.y = 32;
-        this.speed = 3;
+        this.speed = 2;
         direction = "start";
     }
 
@@ -94,6 +94,8 @@ public class Player extends Entity {
     }
 
     public void draw(Graphics2D g2) {
+        if (gp.level > gp.maxLevel) return;
+
         BufferedImage image = null;
 
         switch (direction) {
@@ -154,7 +156,7 @@ public class Player extends Entity {
                 case "Stair":
                     gp.obj[i] = null;
                     gp.level++;
-                    System.out.println(gp.level);
+                    gp.changeLevel();
             }
 
         }
