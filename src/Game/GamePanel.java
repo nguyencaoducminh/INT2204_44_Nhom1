@@ -27,6 +27,7 @@ public class GamePanel extends JPanel implements Runnable {
     public TileManager tileM = new TileManager(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public BotSetter bSetter = new BotSetter(this);
+    public UI ui = new UI(this);
     Player player = new Player(this, keyH);
     public CollisionChecker cChecker = new CollisionChecker(this);
     public SuperObject[] obj = new SuperObject[15];
@@ -118,6 +119,8 @@ public class GamePanel extends JPanel implements Runnable {
 
         player.draw(g2);
 
+        ui.draw(g2);
+
         g2.dispose();
     }
 
@@ -132,7 +135,8 @@ public class GamePanel extends JPanel implements Runnable {
         } else {
             tileM.loadMap("/res/maps/end.txt");
             player.setDefaultValues();
-            player.speed = 0;
+
+            gameThread = null;
         }
     }
 }

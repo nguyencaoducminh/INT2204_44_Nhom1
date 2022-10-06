@@ -16,6 +16,7 @@ public class Player extends Entity {
     public Bomb bomb;
     public boolean haveBomb = true;
     public int hasKey = 0;
+    public int life;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
@@ -34,6 +35,7 @@ public class Player extends Entity {
         this.y = 32;
         this.speed = 2;
         direction = "start";
+        life = 3;
     }
 
     public void getPlayerImage() {
