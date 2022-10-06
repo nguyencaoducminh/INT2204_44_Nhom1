@@ -1,5 +1,6 @@
 package Game;
 
+import Entity.Entity;
 import Entity.Player;
 import Tile.TileManager;
 import Object.SuperObject;
@@ -25,9 +26,11 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler keyH = new KeyHandler();
     public TileManager tileM = new TileManager(this);
     public AssetSetter aSetter = new AssetSetter(this);
+    public BotSetter bSetter = new BotSetter(this);
     Player player = new Player(this, keyH);
     public CollisionChecker cChecker = new CollisionChecker(this);
     public SuperObject[] obj = new SuperObject[15];
+    public Entity[] bot = new Entity[5];
 
     //Game Variables
     public int maxLevel = 3;
@@ -42,6 +45,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void setupGame() {
+        bSetter.setBot();
         aSetter.setObject();
     }
 
@@ -81,6 +85,11 @@ public class GamePanel extends JPanel implements Runnable {
                 player.haveBomb = true;
             }
         }
+
+        //TODO: hàm update
+        for (Entity entity : bot) {
+            entity.update();
+        }
     }
 
     public void paintComponent (Graphics g) {
@@ -99,6 +108,10 @@ public class GamePanel extends JPanel implements Runnable {
         if (!player.haveBomb) {
             player.bomb.draw(g2);
         }
+
+        for (Entity entity : bot) {
+            entity.draw();
+         }
 
         player.draw(g2);
 
