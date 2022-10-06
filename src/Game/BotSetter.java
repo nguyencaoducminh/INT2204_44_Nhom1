@@ -2,6 +2,8 @@ package Game;
 
 import Entity.*;
 
+import java.util.Arrays;
+
 public class BotSetter {
     GamePanel gp;
 
@@ -18,8 +20,6 @@ public class BotSetter {
     }
 
     public void clearBotList() {
-        for (Entity entity : gp.bot) {
-            entity = null;
-        }
+        Arrays.fill(gp.bot, null);
     }
 }

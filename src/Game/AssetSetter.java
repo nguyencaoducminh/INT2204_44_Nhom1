@@ -4,6 +4,8 @@ import Object.OBJ_Key;
 import Object.OBJ_Door;
 import Object.OBJ_Stair;
 
+import java.util.Arrays;
+
 public class AssetSetter {
     GamePanel gp;
 
@@ -25,6 +27,10 @@ public class AssetSetter {
                 gp.obj[2] = new OBJ_Door();
                 gp.obj[2].x = 8 * gp.tileSize;
                 gp.obj[2].y = 8 * gp.tileSize;
+
+                gp.obj[3] = new OBJ_Door();
+                gp.obj[3].x = 2 * gp.tileSize;
+                gp.obj[3].y = gp.tileSize;
                 break;
 
             case 2:
@@ -98,8 +104,6 @@ public class AssetSetter {
     }
 
     public void clearObjectList() {
-        for (Object object : gp.obj) {
-            object = null;
-        }
+        Arrays.fill(gp.obj, null);
     }
 }
