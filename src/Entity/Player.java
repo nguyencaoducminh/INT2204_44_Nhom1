@@ -15,7 +15,7 @@ public class Player extends Entity {
     int hitBoxHeight = 18;
     public Bomb bomb;
     public boolean haveBomb = true;
-    int hasKey = 0;
+    public int hasKey = 0;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
