@@ -14,8 +14,10 @@ public class BotSetter {
     public void setBot() {
         switch (gp.level) {
             case 1:
-                gp.bot[0] = new Balloon(gp, 14 * gp.tileSize, gp.tileSize);
-                gp.bot[1] = new Balloon(gp, 7 * gp.tileSize, 8 * gp.tileSize);
+                gp.bot[0] = new Balloon(gp, 7 * gp.tileSize, gp.tileSize);
+                gp.bot[1] = new Balloon(gp, 8 * gp.tileSize, 14 * gp.tileSize);
+                gp.bot[2] = new Balloon(gp, gp.tileSize, 8 * gp.tileSize);
+                gp.bot[3] = new Balloon(gp, 14 * gp.tileSize, 7 * gp.tileSize);
                 break;
         }
     }

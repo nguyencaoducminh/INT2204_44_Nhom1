@@ -36,6 +36,7 @@ public class Player extends Entity {
         this.speed = 2;
         direction = "start";
         life = 3;
+        hasKey = 0;
     }
 
     public void getPlayerImage() {

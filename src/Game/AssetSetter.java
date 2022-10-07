@@ -18,15 +18,15 @@ public class AssetSetter {
             case 1:
                 gp.obj[0] = new OBJ_Key();
                 gp.obj[0].x = 14 * gp.tileSize;
-                gp.obj[0].y = 14 * gp.tileSize;
+                gp.obj[0].y = gp.tileSize;
 
                 gp.obj[1] = new OBJ_Stair();
-                gp.obj[1].x = 8 * gp.tileSize;
-                gp.obj[1].y = 8 * gp.tileSize;
+                gp.obj[1].x = 6 * gp.tileSize;
+                gp.obj[1].y = 9 * gp.tileSize;
 
                 gp.obj[2] = new OBJ_Door();
-                gp.obj[2].x = 8 * gp.tileSize;
-                gp.obj[2].y = 8 * gp.tileSize;
+                gp.obj[2].x = 6 * gp.tileSize;
+                gp.obj[2].y = 9 * gp.tileSize;
                 break;
 
             case 2:
