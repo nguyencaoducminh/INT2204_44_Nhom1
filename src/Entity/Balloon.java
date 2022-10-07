@@ -14,7 +14,7 @@ public class Balloon extends Entity {
 
     public Balloon(GamePanel gp, int x, int y) {
         this.gp = gp;
-        hitBox = new Rectangle(x + 7, y + 5, hotBoxWidth, hitBoxWeight);
+        hitBox = new Rectangle(0, 0, hotBoxWidth, hitBoxWeight);
         hitBoxDefaultX = hitBox.x;
         hitBoxDefaultY = hitBox.y;
 

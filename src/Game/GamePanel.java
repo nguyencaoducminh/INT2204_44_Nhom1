@@ -87,6 +87,12 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
 
+        for (int i = 0; i < bot.length; i++) {
+            if (bot[i] != null && cChecker.checkExplosion(bot[i])) {
+                bot[i] = null;
+            }
+        }
+
         for (Entity entity : bot) {
             if (entity != null) {
                 entity.update();
