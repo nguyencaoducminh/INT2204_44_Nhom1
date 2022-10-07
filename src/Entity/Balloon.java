@@ -9,34 +9,64 @@ import java.io.IOException;
 public class Balloon extends Entity {
 
     GamePanel gp;
-    int hotBoxWidth = 16;
-    int hitBoxWeight = 16;
+    int hotBoxWidth = 22;
+    int hitBoxWeight = 22;
 
-    public Balloon(GamePanel gp, int x, int y) {
+    public Balloon(GamePanel gp, int x, int y, String direction) {
         this.gp = gp;
-        hitBox = new Rectangle(0, 0, hotBoxWidth, hitBoxWeight);
+        hitBox = new Rectangle(5, 3, hotBoxWidth, hitBoxWeight);
         hitBoxDefaultX = hitBox.x;
         hitBoxDefaultY = hitBox.y;
 
         this.x = x;
         this.y = y;
         this.speed = 2;
-        direction = "start";
+        this.direction = direction;
 
         getBalloonImage();
     }
 
     public void getBalloonImage() {
         try {
-            start = ImageIO.read(getClass().getResourceAsStream("/res/ballone/balloon_1.png"));
-            up1 = ImageIO.read(getClass().getResourceAsStream("/res/ballone/balloon_2.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/res/ballone/balloon_3.png"));
+            start = ImageIO.read(getClass().getResourceAsStream("/res/balloon/balloon_1.png"));
+            up1 = ImageIO.read(getClass().getResourceAsStream("/res/balloon/balloon_2.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/res/balloon/balloon_3.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void update() {
+        if (direction.equals("left") || direction.equals("right")) {
+            collisionOn = false;
+            gp.cChecker.checkTile(this);
+
+            if (collisionOn) {
+                if (direction.equals("left")) {
+                    direction = "right";
+                } else {
+                    direction = "left";
+                }
+            }
+        } else {
+            collisionOn = false;
+            gp.cChecker.checkTile(this);
+
+            if (collisionOn) {
+                if (direction.equals("up")) {
+                    direction = "down";
+                } else {
+                    direction = "up";
+                }
+            }
+        }
+
+        switch (direction) {
+            case "up": y -= speed; break;
+            case "down": y += speed; break;
+            case "left": x -= speed; break;
+            case "right": x += speed; break;
+        }
 
         spriteCounter++;
         if (spriteCounter > 12) {
