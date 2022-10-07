@@ -9,12 +9,12 @@ import java.io.IOException;
 public class Balloon extends Entity {
 
     GamePanel gp;
-    int hotBoxWidth = 22;
+    int hitBoxWidth = 22;
     int hitBoxWeight = 22;
 
     public Balloon(GamePanel gp, int x, int y, String direction) {
         this.gp = gp;
-        hitBox = new Rectangle(5, 3, hotBoxWidth, hitBoxWeight);
+        hitBox = new Rectangle(5, 3, hitBoxWidth, hitBoxWeight);
         hitBoxDefaultX = hitBox.x;
         hitBoxDefaultY = hitBox.y;
 
