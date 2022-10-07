@@ -133,4 +133,26 @@ public class CollisionChecker {
 
         return index;
     }
+
+    public boolean checkExplosion(Entity entity) {
+        int entityLeftX = entity.x + entity.hitBox.x;
+        int entityRightX = entityLeftX + entity.hitBox.width;
+        int entityTopY = entity.y + entity.hitBox.y;
+        int entityBottomY = entityTopY + entity.hitBox.height;
+
+        int entityLeftCol = entityLeftX / gp.tileSize;
+        int entityRightCol = entityRightX / gp.tileSize;
+        int entityTopRow = entityTopY / gp.tileSize;
+        int entityBottomRow = entityBottomY / gp.tileSize;
+
+        int tileNum1, tileNum2, tileNum3, tileNum4;
+
+        tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
+        tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
+        tileNum3 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
+        tileNum4 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
+
+        return gp.tileM.tile[tileNum1].damage || gp.tileM.tile[tileNum2].damage ||
+                gp.tileM.tile[tileNum3].damage || gp.tileM.tile[tileNum4].damage;
+    }
 }

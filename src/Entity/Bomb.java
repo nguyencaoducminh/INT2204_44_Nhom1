@@ -15,6 +15,7 @@ public class Bomb extends Entity {
     public int col;
     public int row;
     public boolean explode = false;
+    int tileNum1, tileNum2, tileNum3, tileNum4;
 
     public Bomb(GamePanel gp, Player player) {
         this.gp = gp;
@@ -56,25 +57,42 @@ public class Bomb extends Entity {
         }
 
         if (explode) {
-            int tileNum1 = gp.tileM.mapTileNum[col+1][row];
-            int tileNum2 = gp.tileM.mapTileNum[col-1][row];
-            int tileNum3 = gp.tileM.mapTileNum[col][row+1];
-            int tileNum4 = gp.tileM.mapTileNum[col][row-1];
+            tileNum1 = gp.tileM.mapTileNum[col+1][row];
+            tileNum2 = gp.tileM.mapTileNum[col-1][row];
+            tileNum3 = gp.tileM.mapTileNum[col][row+1];
+            tileNum4 = gp.tileM.mapTileNum[col][row-1];
 
             if (gp.tileM.tile[tileNum1].breakable) {
-                gp.tileM.mapTileNum[col+1][row] = 0;
+                gp.tileM.mapTileNum[col+1][row] = 8;
             }
             if (gp.tileM.tile[tileNum2].breakable) {
-                gp.tileM.mapTileNum[col-1][row] = 0;
+                gp.tileM.mapTileNum[col-1][row] = 8;
             }
             if (gp.tileM.tile[tileNum3].breakable) {
-                gp.tileM.mapTileNum[col][row+1] = 0;
+                gp.tileM.mapTileNum[col][row+1] = 8;
             }
             if (gp.tileM.tile[tileNum4].breakable) {
-                gp.tileM.mapTileNum[col][row-1] = 0;
+                gp.tileM.mapTileNum[col][row-1] = 8;
             }
 
-            gp.tileM.mapTileNum[col][row] = 0;
+            gp.tileM.mapTileNum[col][row] = 8;
+
+            if (bombTimer == 0) {
+                if (gp.tileM.tile[tileNum1].damage) {
+                    gp.tileM.mapTileNum[col+1][row] = 0;
+                }
+                if (gp.tileM.tile[tileNum2].damage) {
+                    gp.tileM.mapTileNum[col-1][row] = 0;
+                }
+                if (gp.tileM.tile[tileNum3].damage) {
+                    gp.tileM.mapTileNum[col][row+1] = 0;
+                }
+                if (gp.tileM.tile[tileNum4].damage) {
+                    gp.tileM.mapTileNum[col][row-1] = 0;
+                }
+
+                gp.tileM.mapTileNum[col][row] = 0;
+            }
 
             if (explosion == null) {
                 explosion = new Explosion(gp, this);

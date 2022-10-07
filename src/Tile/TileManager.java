@@ -27,6 +27,7 @@ public class TileManager {
         try {
             tile[0] = new Tile();
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/background.png"));
+            tile[0].breakable = true;
 
             tile[1] = new Tile();
             tile[1].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/wall.png"));
@@ -40,8 +41,15 @@ public class TileManager {
             tile[3] = new Tile();
             tile[3].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/win_prompt.png"));
 
+            tile[4] = new Tile();
+            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/lose_prompt.png"));
+
+            tile[8] = new Tile();
+            tile[8].damage = true;
+
             tile[9] = new Tile();
             tile[9].collision = true;
+            tile[9].breakable = true;
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -92,8 +100,8 @@ public class TileManager {
 
             if (tileNum == 1 || tileNum == 2) {
                 g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
-            } else if (tileNum == 3) {
-                g2.drawImage(tile[3].image, x, y, 6 * gp.tileSize, 2 * gp.tileSize, null);
+            } else if (tileNum == 3 || tileNum == 4) {
+                g2.drawImage(tile[tileNum].image, x, y, 6 * gp.tileSize, 2 * gp.tileSize, null);
             }
             col++;
             x += gp.tileSize;

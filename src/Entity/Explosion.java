@@ -81,19 +81,19 @@ public class Explosion extends Entity {
     public void draw(Graphics2D g2) {
         int side = 0;
 
-        if (tileNumU == 0) {
+        if (tileNumU == 8) {
             explodeSide[side] = "up";
             side++;
         }
-        if (tileNumD == 0) {
+        if (tileNumD == 8) {
             explodeSide[side] = "down";
             side++;
         }
-        if (tileNumL == 0) {
+        if (tileNumL == 8) {
             explodeSide[side] = "left";
             side++;
         }
-        if (tileNumR == 0) {
+        if (tileNumR == 8) {
             explodeSide[side] = "right";
             side++;
         }

@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 public class UI {
     GamePanel gp;
     Font arial_32;
-    BufferedImage keyImage, heartImage;
+    BufferedImage keyImage, heartImage, bottomPanel;
 
     public UI(GamePanel gp) {
         this.gp = gp;
@@ -20,20 +20,22 @@ public class UI {
         try {
             keyImage = ImageIO.read(getClass().getResourceAsStream("/res/objects/key.png"));
             heartImage = ImageIO.read(getClass().getResourceAsStream("/res/objects/heart.png"));
+            bottomPanel = ImageIO.read(getClass().getResourceAsStream("/res/objects/bottom_panel.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void draw(Graphics2D g2) {
+        g2.drawImage(bottomPanel, 0, 16 * gp.tileSize, 512, 64, null);
 
         for (int i = 1; i <= gp.player.life; i++) {
-            g2.drawImage(heartImage, i * gp.tileSize + 8, 16 * gp.tileSize + 14, null);
+            g2.drawImage(heartImage, i * gp.tileSize + 8, 16 * gp.tileSize + 14, gp.tileSize, gp.tileSize, null);
         }
 
         g2.setFont(arial_32);
         g2.setColor(Color.white);
-        g2.drawImage(keyImage, 12 * gp.tileSize + 8, 16 * gp.tileSize + 14, null);
+        g2.drawImage(keyImage, 12 * gp.tileSize + 8, 16 * gp.tileSize + 14, gp.tileSize, gp.tileSize, null);
         g2.drawString(" x " + gp.player.hasKey, 13 * gp.tileSize + 3, 17 * gp.tileSize + 14);
     }
 }

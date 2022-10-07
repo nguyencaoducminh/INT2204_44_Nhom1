@@ -55,6 +55,19 @@ public class Player extends Entity {
     }
 
     public void update() {
+        if (gp.cChecker.checkExplosion(this)) {
+            life--;
+            if (life == 0) {
+                gp.level = -1;
+            }
+            gp.changeLevel(life);
+
+            haveBomb = true;
+
+            System.out.println(life);
+            return;
+        }
+
         if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
             if (keyH.upPressed) {
                 direction = "up";
@@ -96,7 +109,7 @@ public class Player extends Entity {
     }
 
     public void draw(Graphics2D g2) {
-        if (gp.level > gp.maxLevel) return;
+        if (gp.level > gp.maxLevel || gp.level <= 0) return;
 
         BufferedImage image = null;
 

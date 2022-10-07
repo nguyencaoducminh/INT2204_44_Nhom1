@@ -125,18 +125,27 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void changeLevel() {
+        changeLevel(3);
+    }
+
+    public void changeLevel(int life) {
         aSetter.clearObjectList();
         bSetter.clearBotList();
 
-        if (level <= maxLevel) {
+        if (life < 0) {
+            tileM.loadMap("/res/maps/lose.txt");
+            player.setDefaultValues();
+
+        } else if (level > 0 && level <= maxLevel) {
             setupGame();
             tileM.loadMap("/res/maps/" + level + ".txt");
             player.setDefaultValues();
-        } else {
+            player.life = life;
+
+        } else if (life > maxLevel) {
             tileM.loadMap("/res/maps/end.txt");
             player.setDefaultValues();
 
-            gameThread = null;
         }
     }
 }
