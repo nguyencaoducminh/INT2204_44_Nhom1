@@ -76,7 +76,7 @@ public class CollisionChecker {
                 gp.obj[i].hitBox.x = gp.obj[i].hitBoxDefaultX + gp.obj[i].x;
                 gp.obj[i].hitBox.y = gp.obj[i].hitBoxDefaultY + gp.obj[i].y;
 
-                switch(entity.direction) {
+                switch (entity.direction) {
                     case "up":
                         entity.hitBox.y -= entity.speed;
                         if (entity.hitBox.intersects(gp.obj[i].hitBox)) {
@@ -154,5 +154,51 @@ public class CollisionChecker {
 
         return gp.tileM.tile[tileNum1].damage || gp.tileM.tile[tileNum2].damage ||
                 gp.tileM.tile[tileNum3].damage || gp.tileM.tile[tileNum4].damage;
+    }
+
+    public boolean checkBot(Entity entity) {
+        for (int i = 0; i < gp.bot.length; i++) {
+            if (gp.bot[i] != null) {
+                entity.hitBox.x = entity.hitBoxDefaultX + entity.x;
+                entity.hitBox.y = entity.hitBoxDefaultY + entity.y;
+
+                gp.bot[i].hitBox.x = gp.bot[i].hitBoxDefaultX + gp.bot[i].x;
+                gp.bot[i].hitBox.y = gp.bot[i].hitBoxDefaultY + gp.bot[i].y;
+
+                switch (entity.direction) {
+                    case "up":
+                        entity.hitBox.y -= entity.speed;
+                        if (entity.hitBox.intersects(gp.bot[i].hitBox)) {
+                            return true;
+                        }
+                        break;
+                    case "down":
+                        entity.hitBox.y += entity.speed;
+                        if (entity.hitBox.intersects(gp.bot[i].hitBox)) {
+                            return true;
+                        }
+                        break;
+                    case "left":
+                        entity.hitBox.x -= entity.speed;
+                        if (entity.hitBox.intersects(gp.bot[i].hitBox)) {
+                            return true;
+                        }
+                        break;
+                    case "right":
+                        entity.hitBox.x += entity.speed;
+                        if (entity.hitBox.intersects(gp.bot[i].hitBox)) {
+                           return true;
+                        }
+                        break;
+                }
+
+                entity.hitBox.x = entity.hitBoxDefaultX;
+                entity.hitBox.y = entity.hitBoxDefaultY;
+
+                gp.bot[i].hitBox.x = gp.bot[i].hitBoxDefaultX;
+                gp.bot[i].hitBox.y = gp.bot[i].hitBoxDefaultY;
+            }
+        }
+        return false;
     }
 }

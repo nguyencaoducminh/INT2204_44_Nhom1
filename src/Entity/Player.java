@@ -55,7 +55,7 @@ public class Player extends Entity {
     }
 
     public void update() {
-        if (gp.cChecker.checkExplosion(this)) {
+        if (gp.cChecker.checkExplosion(this) || gp.cChecker.checkBot(this)) {
             life--;
             if (life == 0) {
                 gp.level = -1;

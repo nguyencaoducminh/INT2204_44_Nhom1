@@ -15,6 +15,7 @@ public class BotSetter {
         switch (gp.level) {
             case 1:
                 gp.bot[0] = new Balloon(gp, 14 * gp.tileSize, gp.tileSize);
+                gp.bot[1] = new Balloon(gp, 7 * gp.tileSize, 8 * gp.tileSize);
                 break;
         }
     }

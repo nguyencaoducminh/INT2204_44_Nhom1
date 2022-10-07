@@ -36,8 +36,7 @@ public class Balloon extends Entity {
         }
     }
 
-    public void update(){
-        //TODO: code bot di chuyen
+    public void update() {
 
         spriteCounter++;
         if (spriteCounter > 12) {
