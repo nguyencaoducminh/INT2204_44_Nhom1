@@ -19,6 +19,11 @@ public class BotSetter {
                 gp.bot[2] = new Balloon(gp, gp.tileSize, 8 * gp.tileSize, "right");
                 gp.bot[3] = new Balloon(gp, 14 * gp.tileSize, 7 * gp.tileSize, "left");
                 break;
+            case 2:
+                gp.bot[0] = new Slime(gp, 6* gp.tileSize,5 * gp.tileSize);
+                gp.bot[1] = new Slime(gp, 8* gp.tileSize,7 * gp.tileSize);
+                gp.bot[2] = new Slime(gp, 10* gp.tileSize,9 * gp.tileSize);
+                break;
         }
     }
 

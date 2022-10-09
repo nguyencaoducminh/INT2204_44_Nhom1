@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Entity {
+    GamePanel gp;
     public int x, y;
     public int speed;
     public BufferedImage start, up1, up2, down1, down2, left1, left2, right1, right2;
@@ -17,6 +18,8 @@ public class Entity {
     public Rectangle hitBox;
     public int hitBoxDefaultX, hitBoxDefaultY;
     public boolean collisionOn = false;
+
+    public boolean onPath = false;
 
     public void update() {}
 

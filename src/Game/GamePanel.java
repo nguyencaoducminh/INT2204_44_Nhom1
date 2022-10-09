@@ -1,5 +1,6 @@
 package Game;
 
+import AI.PathFinder;
 import Entity.Entity;
 import Entity.Player;
 import Tile.TileManager;
@@ -28,7 +29,8 @@ public class GamePanel extends JPanel implements Runnable {
     public AssetSetter aSetter = new AssetSetter(this);
     public BotSetter bSetter = new BotSetter(this);
     public UI ui = new UI(this);
-    Player player = new Player(this, keyH);
+    public PathFinder pFinder = new PathFinder(this);
+    public Player player = new Player(this, keyH);
     public CollisionChecker cChecker = new CollisionChecker(this);
     public SuperObject[] obj = new SuperObject[15];
     public Entity[] bot = new Entity[5];
@@ -148,7 +150,7 @@ public class GamePanel extends JPanel implements Runnable {
             player.setDefaultValues();
             player.life = life;
 
-        } else if (life > maxLevel) {
+        } else if (level > maxLevel) {
             tileM.loadMap("/res/maps/end.txt");
             player.setDefaultValues();
 
