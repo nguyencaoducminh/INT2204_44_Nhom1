@@ -110,11 +110,24 @@ public class Slime extends Entity {
             searchPath(goalCol, goalRow);
         }
 
-        switch (direction) {
-            case "up": y -= speed; break;
-            case "down": y += speed; break;
-            case "left": x -= speed; break;
-            case "right": x += speed; break;
+        collisionOn = false;
+        gp.cChecker.checkTile(this);
+
+        int objIndex = gp.cChecker.checkObject(this, true);
+        if (objIndex != 999) {
+            String objectName = gp.obj[objIndex].name;
+            if (objectName.equals("Door")) {
+                collisionOn = true;
+            }
+        }
+
+        if (!collisionOn) {
+            switch (direction) {
+                case "up": y -= speed; break;
+                case "down": y += speed; break;
+                case "left": x -= speed; break;
+                case "right": x += speed; break;
+            }
         }
 
         spriteCounter++;

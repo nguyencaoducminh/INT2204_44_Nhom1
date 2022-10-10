@@ -15,6 +15,7 @@ public class Player extends Entity {
     int hitBoxHeight = 18;
     public Bomb bomb;
     public boolean haveBomb = true;
+    public boolean haveBoot = false;
     public int hasKey = 0;
     public int life;
 
@@ -37,6 +38,7 @@ public class Player extends Entity {
         direction = "start";
         life = 3;
         hasKey = 0;
+        haveBoot = false;
     }
 
     public void getPlayerImage() {
@@ -173,8 +175,21 @@ public class Player extends Entity {
                     gp.obj[i] = null;
                     gp.level++;
                     gp.changeLevel();
+                    break;
+                case "Heart":
+                    if (life < 5) {
+                        life++;
+                    }
+                    gp.obj[i] = null;
+                    break;
+                case "Boot":
+                    if (!haveBoot) {
+                        speed += 1;
+                        haveBoot = true;
+                    }
+                    gp.obj[i] = null;
+                    break;
             }
-
         }
     }
 }

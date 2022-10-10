@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 public class UI {
     GamePanel gp;
     Font arial_32;
-    BufferedImage keyImage, heartImage, bottomPanel;
+    BufferedImage keyImage, heartImage, bootImage, bottomPanel;
 
     public UI(GamePanel gp) {
         this.gp = gp;
@@ -20,6 +20,7 @@ public class UI {
         try {
             keyImage = ImageIO.read(getClass().getResourceAsStream("/res/objects/key.png"));
             heartImage = ImageIO.read(getClass().getResourceAsStream("/res/objects/heart.png"));
+            bootImage = ImageIO.read(getClass().getResourceAsStream("/res/objects/boot.png"));
             bottomPanel = ImageIO.read(getClass().getResourceAsStream("/res/objects/bottom_panel.png"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -31,6 +32,10 @@ public class UI {
 
         for (int i = 1; i <= gp.player.life; i++) {
             g2.drawImage(heartImage, i * gp.tileSize + 8, 16 * gp.tileSize + 14, gp.tileSize, gp.tileSize, null);
+        }
+
+        if (gp.player.haveBoot) {
+            g2.drawImage(bootImage, 7 * gp.tileSize + 20, 16 * gp.tileSize + 14, gp.tileSize, gp.tileSize, null);
         }
 
         g2.setFont(arial_32);

@@ -88,8 +88,6 @@ public class TileManager {
     }
 
     public void draw(Graphics2D g2) {
-        g2.drawImage(tile[0].image, 0, 0, 16 * gp.tileSize, 16 * gp.tileSize, null);
-
         int col = 0;
         int row = 0;
         int x = 0;
@@ -113,5 +111,9 @@ public class TileManager {
                 y += gp.tileSize;
             }
         }
+    }
+
+    public void drawBackground(Graphics2D g2) {
+        g2.drawImage(tile[0].image, 0, 0, 16 * gp.tileSize, 16 * gp.tileSize, null);
     }
 }

@@ -107,13 +107,15 @@ public class GamePanel extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D) g;
 
-        tileM.draw(g2);
+        tileM.drawBackground(g2);
 
         for (SuperObject object : obj) {
             if (object != null) {
                 object.draw(g2, this);
             }
         }
+
+        tileM.draw(g2);
 
         if (!player.haveBomb) {
             player.bomb.draw(g2);

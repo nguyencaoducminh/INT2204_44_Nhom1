@@ -1,8 +1,6 @@
 package Game;
 
-import Object.OBJ_Key;
-import Object.OBJ_Door;
-import Object.OBJ_Stair;
+import Object.*;
 
 import java.util.Arrays;
 
@@ -27,6 +25,14 @@ public class AssetSetter {
                 gp.obj[2] = new OBJ_Door();
                 gp.obj[2].x = 6 * gp.tileSize;
                 gp.obj[2].y = 9 * gp.tileSize;
+
+                gp.obj[3] = new OBJ_Boot();
+                gp.obj[3].x = 6 * gp.tileSize;
+                gp.obj[3].y = gp.tileSize;
+
+                gp.obj[4] = new OBJ_Heart();
+                gp.obj[4].x = 14 * gp.tileSize;
+                gp.obj[4].y = 4 * gp.tileSize;
                 break;
 
             case 2:
