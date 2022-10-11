@@ -1,6 +1,6 @@
 package Game;
 
-import Object.*;
+import Objects.*;
 
 import java.util.Arrays;
 

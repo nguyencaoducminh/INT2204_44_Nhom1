@@ -1,7 +1,6 @@
 package AI;
 
 import Game.GamePanel;
-import Object.SuperObject;
 
 import java.util.ArrayList;
 

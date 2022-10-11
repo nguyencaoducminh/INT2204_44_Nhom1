@@ -1,9 +1,6 @@
 package Game;
 
 import Entity.Entity;
-import Object.SuperObject;
-
-import java.awt.*;
 
 public class CollisionChecker {
     GamePanel gp;

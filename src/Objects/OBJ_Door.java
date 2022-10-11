@@ -1,4 +1,4 @@
-package Object;
+package Objects;
 
 import javax.imageio.ImageIO;
 import java.io.IOException;

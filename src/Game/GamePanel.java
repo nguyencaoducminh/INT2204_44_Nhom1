@@ -4,7 +4,7 @@ import AI.PathFinder;
 import Entity.Entity;
 import Entity.Player;
 import Tile.TileManager;
-import Object.SuperObject;
+import Objects.SuperObject;
 
 import javax.swing.JPanel;
 import java.awt.*;
