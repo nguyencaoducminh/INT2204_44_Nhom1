@@ -20,16 +20,16 @@ public class BotSetter {
                 gp.bot[3] = new Balloon(gp, 14 * gp.tileSize, 7 * gp.tileSize, "left");
                 break;
             case 2:
-                gp.bot[0] = new Slime(gp, 6* gp.tileSize,5 * gp.tileSize);
-                gp.bot[1] = new Slime(gp, 8* gp.tileSize,7 * gp.tileSize);
-                gp.bot[2] = new Slime(gp, 10* gp.tileSize,9 * gp.tileSize);
-                gp.bot[3] = new Balloon(gp, 4* gp.tileSize,4 * gp.tileSize, "right");
+                gp.bot[0] = new Slime(gp, 6 * gp.tileSize, 5 * gp.tileSize);
+                gp.bot[1] = new Slime(gp, 8 * gp.tileSize, 7 * gp.tileSize);
+                gp.bot[2] = new Slime(gp, 10 * gp.tileSize, 9 * gp.tileSize);
+                gp.bot[3] = new Balloon(gp, 4 * gp.tileSize, 4 * gp.tileSize, "right");
                 break;
             case 3:
-                gp.bot[0] = new Balloon(gp, 13* gp.tileSize,1 * gp.tileSize, "down");
-                gp.bot[1] = new Slime(gp, 11* gp.tileSize,13 * gp.tileSize);
-                gp.bot[2] = new Balloon(gp, 14* gp.tileSize,12 * gp.tileSize, "up");
-                gp.bot[3] = new Slime(gp, 7* gp.tileSize,10 * gp.tileSize);
+                gp.bot[0] = new Balloon(gp, 13 * gp.tileSize, gp.tileSize, "down");
+                gp.bot[1] = new Slime(gp, 10 * gp.tileSize, 12 * gp.tileSize);
+                gp.bot[2] = new Balloon(gp, 14 * gp.tileSize, 12 * gp.tileSize, "up");
+                gp.bot[3] = new Slime(gp, 8 * gp.tileSize, 9 * gp.tileSize);
                 break;
 
         }

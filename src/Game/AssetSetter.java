@@ -1,5 +1,6 @@
 package Game;
 
+import Entity.Balloon;
 import Objects.*;
 
 import java.util.Arrays;
@@ -55,6 +56,18 @@ public class AssetSetter {
                 gp.obj[4] = new OBJ_Stair();
                 gp.obj[4].x = 7 * gp.tileSize;
                 gp.obj[4].y = 7 * gp.tileSize;
+
+                gp.obj[5] = new OBJ_Boot();
+                gp.obj[5].x = gp.tileSize;
+                gp.obj[5].y = 3 * gp.tileSize;
+
+                gp.obj[6] = new OBJ_Heart();
+                gp.obj[6].x = 13 * gp.tileSize;
+                gp.obj[6].y = 6 * gp.tileSize;
+
+                gp.obj[7] = new OBJ_Heart();
+                gp.obj[7].x = 6 * gp.tileSize;
+                gp.obj[7].y = 11 * gp.tileSize;
                 break;
 
             case 3:
@@ -101,6 +114,22 @@ public class AssetSetter {
                 gp.obj[10] = new OBJ_Stair();
                 gp.obj[10].x = 13 * gp.tileSize;
                 gp.obj[10].y = 14 * gp.tileSize;
+
+                gp.obj[11] = new OBJ_Heart();
+                gp.obj[11].x = 2 * gp.tileSize;
+                gp.obj[11].y = 3 * gp.tileSize;
+
+                gp.obj[12] = new OBJ_Boot();
+                gp.obj[12].x = 8 * gp.tileSize;
+                gp.obj[12].y = 2 * gp.tileSize;
+
+                gp.obj[13] = new OBJ_Heart();
+                gp.obj[13].x = 11 * gp.tileSize;
+                gp.obj[13].y = 14 * gp.tileSize;
+
+                gp.obj[14] = new OBJ_Heart();
+                gp.obj[14].x = 8 * gp.tileSize;
+                gp.obj[14].y = 7 * gp.tileSize;
                 break;
         }
     }
